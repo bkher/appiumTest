@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Main Test Suite" parallel="tests" verbose="1">
+    <listeners>
+        <listener class-name="reports.TestListener" />
+		<listener class-name="reports.AnnotationTransformer"/>
+		<listener class-name="reports.PriorityInterceptor"/>
+    </listeners>
+<test name="Android App test" group-by-instances="true">
+ <!--    <groups>
+        <run>
+            <include name="${groups}"/>
+        </run>
+    </groups> -->
+    <classes>
+        <class name="bhagatkher.appium.loginFlowTest"/>
+    </classes>
+</test>
+</suite>

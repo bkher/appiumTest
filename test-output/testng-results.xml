@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2024-08-15T19:10:22 IST" name="Main Test Suite" finished-at="2024-08-15T19:11:21 IST" duration-ms="58179">
+    <groups>
+    </groups>
+    <test started-at="2024-08-15T19:10:22 IST" name="Android App test" finished-at="2024-08-15T19:11:21 IST" duration-ms="58179">
+      <class name="bhagatkher.appium.loginFlowTest">
+        <test-method is-config="true" signature="configAppium()[pri:0, instance:bhagatkher.appium.loginFlowTest@f78a47e]" started-at="2024-08-15T19:10:22 IST" name="configAppium" finished-at="2024-08-15T19:10:27 IST" duration-ms="4951" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- configAppium -->
+        <test-method is-config="true" signature="initialize()[pri:0, instance:bhagatkher.appium.loginFlowTest@f78a47e]" started-at="2024-08-15T19:10:27 IST" name="initialize" finished-at="2024-08-15T19:10:27 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initialize -->
+        <test-method is-config="true" signature="startReportForMethod(java.lang.reflect.Method)[pri:0, instance:bhagatkher.appium.loginFlowTest@f78a47e]" started-at="2024-08-15T19:10:27 IST" name="startReportForMethod" finished-at="2024-08-15T19:10:27 IST" duration-ms="59" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void bhagatkher.appium.loginFlowTest.LoginWithValidCredentials() throws java.net.MalformedURLException,java.net.URISyntaxException,java.lang.InterruptedException]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- startReportForMethod -->
+        <test-method signature="LoginWithValidCredentials()[pri:0, instance:bhagatkher.appium.loginFlowTest@f78a47e]" started-at="2024-08-15T19:10:27 IST" name="LoginWithValidCredentials" finished-at="2024-08-15T19:11:20 IST" duration-ms="52698" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- LoginWithValidCredentials -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:bhagatkher.appium.loginFlowTest@f78a47e]" started-at="2024-08-15T19:11:20 IST" name="tearDown" finished-at="2024-08-15T19:11:21 IST" duration-ms="138" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- bhagatkher.appium.loginFlowTest -->
+    </test> <!-- Android App test -->
+  </suite> <!-- Main Test Suite -->
+</testng-results>
