@@ -12,7 +12,7 @@
         </run>
     </groups> -->
     <classes>
-        <class name="bhagatkher.appium.loginFlowTest"/>
+        <class name="DemoAppTests.firstTest"/>
     </classes>
 </test>
 </suite>
