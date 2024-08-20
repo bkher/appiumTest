@@ -9,12 +9,11 @@ import java.net.URL;
 import java.time.Duration;
 import java.util.Properties;
 
+import common.DriverFactory;
+import io.appium.java_client.AppiumDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
@@ -22,9 +21,10 @@ import reports.Log;
 
 public class baseTest {
 
-
-		public static AndroidDriver driver;
+	//public static AndroidDriver driver;
+	public static AppiumDriver driver;
 		public Properties prop;
+
 		public baseTest() {
 			try {
 				prop = new Properties();
@@ -38,26 +38,38 @@ public class baseTest {
 			PageFactory.initElements(driver, this);
 		}
 
-		public AndroidDriver getDriver() {
-			return driver;
+	public AndroidDriver getDriver() {
+			return (AndroidDriver) driver;
 		}
 
 		
 
 		@BeforeSuite(alwaysRun = true)
-		public void launchApp() throws InterruptedException, MalformedURLException {
+	/*	public void launchApp() throws InterruptedException, MalformedURLException {
 			
 			UiAutomator2Options options = new UiAutomator2Options();
 			//options.setDeviceName(prop.getProperty("Pixel 8 Pro API 30")); //emulator
-			options.setDeviceName("Pixel 8 Pro API 30");// real device		
+			options.setDeviceName(prop.getProperty("Pixel 4 API 35"));// real device
 		//	options.setChromedriverExecutable("//Users//rahulshetty//documents//chromedriver 11");
 		//	options.setApp(System.getProperty("user.dir")+"//src//test//resources//applicationsFile//ApiDemos-debug.apk");
-			options.setApp("//Users//bhagatsinhk//Documents//bgtkher002//appiumTest//src//test//resources//applicationsFile//General-Store.apk");
+			options.setApp("C:\\Users\\abhij\\Downloads\\appiumTest-develop-Bhagat\\appiumTest-develop-Bhagat\\src\\test\\resources\\applicationsFile\\General-Store.apk");
 			 driver = new AndroidDriver(new URL("http://127.0.0.1:4723"),options);
 			 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-			
-		}
-
+		}*/
+	@Parameters({"platform"})
+	public void setup(String platform) throws IOException, MalformedURLException {
+		loadConfig(platform);
+			driver= DriverFactory.getDriver(platform, prop);
+		//(platform, prop);
+	}
+	private void loadConfig(String platform) throws IOException {
+		prop = new Properties();
+		String configFilePath = platform.equalsIgnoreCase("Android")
+				? "src/test/resources/config/android-config.properties"
+				: "src/test/resources/config/ios-config.properties";
+		FileInputStream configFile = new FileInputStream(configFilePath);
+		prop.load(configFile);
+	}
 		@BeforeClass(alwaysRun = true)
 		public void initialize() throws Exception {
 			Log.startLog(this.getClass().getSimpleName());      
@@ -72,7 +84,5 @@ public class baseTest {
 		public void CloseBrowser() {
 			driver.quit();
 		}
-	
-
 
 }
