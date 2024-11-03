@@ -65,10 +65,10 @@ public class baseTest {
 	        flutterCapabilities.setCapability( "appium:deviceName", "Pixel 8 Pro API 30" );
 	        flutterCapabilities.setCapability( "platformName", "Android" );
 	     
-	        flutterCapabilities.setCapability("appium:automationName", "Flutter");
+	        flutterCapabilities.setCapability("appium:automationName", "uiAutomator2");
 	        
 	     
-	        flutterCapabilities.setCapability("appium:app",System.getProperty("user.dir")+"//src//test//resources//applicationsFile//flutterlogin-debug.apk");
+	        flutterCapabilities.setCapability("appium:app",System.getProperty("user.dir")+"//src//test//resources//applicationsFile//CourierDost_v.apk");
 	        driver = new AndroidDriver(new URL("http://127.0.0.1:4723"), flutterCapabilities);
 			
 		//	driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"),options);
