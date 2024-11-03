@@ -53,6 +53,11 @@
             <version>${commonLangVersion}</version>
         </dependency>
 
+		<dependency>
+			<groupId>io.github.ashwithpoojary98</groupId>
+			<artifactId>appium_flutterfinder_java</artifactId>
+			<version>1.0.9</version>
+		</dependency>
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>

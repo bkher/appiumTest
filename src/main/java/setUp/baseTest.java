@@ -9,6 +9,7 @@ import java.net.URL;
 import java.time.Duration;
 import java.util.Properties;
 
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
@@ -46,15 +47,32 @@ public class baseTest {
 
 		@BeforeSuite(alwaysRun = true)
 		public void launchApp() throws InterruptedException, MalformedURLException {
-			
+		/*	
 			UiAutomator2Options options = new UiAutomator2Options();
 			//options.setDeviceName(prop.getProperty("Pixel 8 Pro API 30")); //emulator
 			options.setDeviceName("Pixel 8 Pro API 30");// real device		
+		
 		//	options.setChromedriverExecutable("//Users//rahulshetty//documents//chromedriver 11");
-		//	options.setApp(System.getProperty("user.dir")+"//src//test//resources//applicationsFile//ApiDemos-debug.apk");
-			options.setApp("//Users//bhagatsinhk//Documents//bgtkher002//appiumTest//src//test//resources//applicationsFile//General-Store.apk");
-			 driver = new AndroidDriver(new URL("http://127.0.0.1:4723"),options);
-			 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+			
+			options.setApp(System.getProperty("user.dir")+"//src//test//resources//applicationsFile//M3-demo.apk");
+			options.setAutomationName("Flutter");
+		
+		//	options.setApp("//Users//bhagatsinhk//Documents//bgtkher002//appiumTest//src//test//resources//applicationsFile//General-Store.apk");
+		//	 driver = new AndroidDriver(new URL("http://127.0.0.1:4723"),options);
+			*/
+			
+			DesiredCapabilities flutterCapabilities = new DesiredCapabilities();
+	        flutterCapabilities.setCapability( "appium:deviceName", "Pixel 8 Pro API 30" );
+	        flutterCapabilities.setCapability( "platformName", "Android" );
+	     
+	        flutterCapabilities.setCapability("appium:automationName", "Flutter");
+	        
+	     
+	        flutterCapabilities.setCapability("appium:app",System.getProperty("user.dir")+"//src//test//resources//applicationsFile//flutterlogin-debug.apk");
+	        driver = new AndroidDriver(new URL("http://127.0.0.1:4723"), flutterCapabilities);
+			
+		//	driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"),options);
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 			
 		}
 

@@ -4,6 +4,7 @@ import java.time.Duration;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -12,6 +13,9 @@ import com.google.common.collect.ImmutableMap;
 
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.PerformsTouchActions;
+import io.appium.java_client.TouchAction;
+import reports.Log;
 import setUp.baseTest;
 
 public class utils extends baseTest{
@@ -35,6 +39,35 @@ public class utils extends baseTest{
 		return price;
 		
 	}
+	
+	public static void performDoubleTap(WebElement element){
+		try {
+			Actions action = new Actions(driver);
+			action.doubleClick(element);
+			action.perform();
+		}
+		catch (Exception e) {
+			Log.fail("Unable to perform Double Tap Operation" + e.getMessage());
+		} 
+	}
+	
+	public static boolean waitForElement(WebElement element, Duration maxWait) {
+		boolean statusOfElementToBeReturned = false;
+		WebDriverWait wait = new WebDriverWait(driver, maxWait);
+		try {
+		    WebElement waitElement = wait.until(ExpectedConditions.visibilityOf(element));
+		    if (null != waitElement && waitElement.isDisplayed() && waitElement.isEnabled())
+		    {
+		    	statusOfElementToBeReturned = true;
+		    }
+		} 
+		catch (Exception ex) {
+		    	statusOfElementToBeReturned = false;
+		}
+		    return statusOfElementToBeReturned;
+	}
+	
+	
 
 	public void scrollToEndAction()
 	{

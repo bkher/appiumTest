@@ -35,6 +35,10 @@ public class Log {
 		Log.fatal(message);
 	}
 
+	public static void fail (String message) {
+		Log.fatal(message);
+	}
+
 	public static void debug (String message) {
 		Log.debug(message);
 	}
