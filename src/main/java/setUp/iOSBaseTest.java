@@ -19,14 +19,16 @@ import org.testng.annotations.Test;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
+import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.ios.options.XCUITestOptions;
 import reports.Log;
 
-public class baseTest {
+public class iOSBaseTest {
 
 
-		public static AndroidDriver driver;
+		public static IOSDriver driver;
 		public Properties prop;
-		public baseTest() {
+		public iOSBaseTest() {
 			try {
 				prop = new Properties();
 				FileInputStream fileInput = new FileInputStream(System.getProperty("user.dir")+"/src/main/java/config/config.properties");
@@ -39,7 +41,7 @@ public class baseTest {
 			PageFactory.initElements(driver, this);
 		}
 
-		public AndroidDriver getDriver() {
+		public IOSDriver getDriver() {
 			return driver;
 		}
 
@@ -61,6 +63,14 @@ public class baseTest {
 		//	 driver = new AndroidDriver(new URL("http://127.0.0.1:4723"),options);
 			*/
 			
+			XCUITestOptions options = new XCUITestOptions();
+			options.setDeviceName("iPhone 16 Pro");
+			options.setApp("/Users/bhagatsinhk/Library/Developer/Xcode/DerivedData/UIKitCatalog-fugohounqgbvxpejxqvsprjcdpwe/Build/Products/Debug-iphonesimulator/UIKitCatalog.app");
+			options.setPlatformVersion("18.1");
+			options.setWdaLaunchTimeout(Duration.ofSeconds(20));
+			
+			/*
+			
 			DesiredCapabilities flutterCapabilities = new DesiredCapabilities();
 	        flutterCapabilities.setCapability( "appium:deviceName", "Pixel 8 Pro API 30" );
 	        flutterCapabilities.setCapability( "platformName", "Android" );
@@ -68,10 +78,10 @@ public class baseTest {
 	        flutterCapabilities.setCapability("appium:automationName", "uiAutomator2");
 	        
 	     
-	        flutterCapabilities.setCapability("appium:app",System.getProperty("user.dir")+"//src//test//resources//applicationsFile//app-cd-vendor-debug.apk");
-	        driver = new AndroidDriver(new URL("http://127.0.0.1:4723"), flutterCapabilities);
+	        flutterCapabilities.setCapability("appium:app",System.getProperty("user.dir")+"//src//test//resources//applicationsFile//CourierDost_v.apk");
+	       */ 
+			driver = new IOSDriver(new URL("http://127.0.0.1:4723"), options);
 			
-		//	driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"),options);
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 			
 		}
